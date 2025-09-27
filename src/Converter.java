@@ -1,14 +1,14 @@
 public class Converter {
-    int stepLength = 75;
-    int calPerStep = 50;
-    int cCal = 1000;
-    int smInKilometer = 100_000;
+    private static final int STEP_LENGTH = 75;
+    private static final int CAL_PER_STEP = 50;
+    private static final int CAL_IN_KCAL = 1000;
+    private static final int CM_IN_KILOMETER = 100_000;
 
     int convertToKm(int steps){
-        return stepLength * steps / smInKilometer;
+        return steps * STEP_LENGTH / CM_IN_KILOMETER;
     }
 
     int convertStepsToKilocalories(int steps){
-        return steps * calPerStep / cCal;
+        return steps * CAL_PER_STEP / CAL_IN_KCAL;
     }
 }

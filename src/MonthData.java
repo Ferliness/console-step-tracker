@@ -1,10 +1,16 @@
 public class MonthData {
-    int[] days = new int[30];
+    private static final int DAYS_IN_MONTH = 30;
+    private final int[] days = new int[DAYS_IN_MONTH];
 
     void printDaysAndStepsFromMonth(){
         for (int i = 0; i < days.length; i++) {
             System.out.println((i + 1) + " день: " + days[i]);
         }
+        System.out.println();
+    }
+
+    void setSteps(int steps, int day){
+        days[day-1] = steps;
     }
 
     int sumStepsFromMonth(){
@@ -16,28 +22,32 @@ public class MonthData {
     }
 
     int maxSteps(){
-        int maxNum = 0;
+        int max = 0;
         for (int day : days) {
-            if (maxNum < day) {
-                maxNum = day;
+            if (max < day) {
+                max = day;
             }
         }
-        return maxNum;
+        return max;
     }
 
     int bestSeries(int goalByStepsPerDay) {
         int currentSeries = 0;
         int finalSeries = 0;
         for (int day : days) {
-            if (goalByStepsPerDay <= day) {
+            if (day >= goalByStepsPerDay) {
                 currentSeries++;
-            } else {
                 if (finalSeries < currentSeries) {
                     finalSeries = currentSeries;
                 }
+            } else {
                 currentSeries = 0;
             }
         }
         return finalSeries;
+    }
+
+    int calcAverage(int sumSteps){
+        return sumSteps / DAYS_IN_MONTH;
     }
 }

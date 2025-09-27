@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class ConsoleTracker {
     private final Scanner scanner = new Scanner(System.in);
-    private final StepTracker stepTracker = new StepTracker(scanner);
+    private final StepTracker stepTracker = new StepTracker();
     private boolean running = true;
 
     public void run(){
@@ -16,6 +16,7 @@ public class ConsoleTracker {
                 case 4 -> exit();
                 default -> System.out.println("Такой команды не существует.");
             }
+            System.out.println();
         }
     }
 
@@ -27,10 +28,10 @@ public class ConsoleTracker {
     }
 
     private void addNewNumberStepsPerDay(){
-        int monthNum = askInt("Введите номер месяца (1-12)", 1, 12);
-        int dayNum = askInt("Введите день месяца (1-30)", 1, 30);
-        int stepNum = askInt("Введите количество шагов (больше 0)", 0, Integer.MAX_VALUE);
-        stepTracker.addNewNumberStepsPerDay(monthNum, dayNum, stepNum);
+        int month = askInt("Введите номер месяца (1-12)", 1, 12);
+        int day = askInt("Введите день месяца (1-30)", 1, 30);
+        int steps = askInt("Введите количество шагов (больше 0)", 0, Integer.MAX_VALUE);
+        stepTracker.addNewNumberStepsPerDay(month, day, steps);
     }
 
     private void changeStepGoal(){
@@ -39,8 +40,8 @@ public class ConsoleTracker {
     }
 
     private void printStatistic(){
-        int monthNum = askInt("Введите номер месяца (1-12)", 1, 12);
-        stepTracker.printStatistic(monthNum);
+        int month = askInt("Введите номер месяца (1-12)", 1, 12);
+        stepTracker.printStatistic(month);
     }
 
     private int askInt(String message, int min, int max){
