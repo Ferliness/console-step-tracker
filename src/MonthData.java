@@ -50,4 +50,8 @@ public class MonthData {
     int calcAverage(int sumSteps){
         return sumSteps / DAYS_IN_MONTH;
     }
+
+    int calcAverage() {
+        return sumStepsFromMonth() / DAYS_IN_MONTH;
+    }
 }
